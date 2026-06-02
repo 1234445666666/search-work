@@ -43,7 +43,7 @@ export default function WorkFilters() {
           value={city}
           onChange={(e) => setCity(e.target.value)}
         >
-          <option value="all">все города</option>
+          <option value="">все города</option>
           {uniqueCities.map((city) => (
             <option value={city} key={city}>
               {city}
