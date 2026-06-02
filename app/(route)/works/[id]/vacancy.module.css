@@ -1,0 +1,252 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f4f6f9;
+  padding: 24px 16px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.notFound {
+  text-align: center;
+  margin-top: 80px;
+  color: #94a3b8;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 28px 24px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  height: max-content;
+}
+
+/* Градиентный акцент сверху карточки */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2563eb, #7c3aed, #ec4899);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 8px;
+}
+
+.city {
+  font-size: 12px;
+  font-weight: 700;
+  color: #2563eb;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: #0f172a;
+  margin: 0;
+}
+
+.position {
+  font-size: 15px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Зарплата — самый важный элемент, должна быть заметной */
+.salary {
+  font-size: 28px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #059669, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 4px 0;
+  line-height: 1.1;
+}
+
+.company {
+  font-size: 15px;
+  font-weight: 600;
+  color: #334155;
+  margin: 0;
+}
+
+.badges {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.badge {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 16px;
+  border-radius: 10px;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.success {
+  background-color: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.warning {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.info {
+  background-color: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+
+.neutral {
+  background-color: #f8fafc;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+.content {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 24px;
+}
+
+.subheading {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.description {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #475569;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.applyBtn {
+  width: 100%;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: #ffffff;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+  font-family: inherit;
+  letter-spacing: 0.1px;
+}
+
+.applyBtn:hover {
+  opacity: 0.9;
+}
+
+.applyBtn:active {
+  transform: scale(0.99);
+}
+
+/* Ссылка "Назад" */
+.card > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.card > a::before {
+  content: "←";
+  font-size: 16px;
+}
+
+.card > a:hover {
+  color: #2563eb;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 32px;
+  }
+
+  .card {
+    padding: 36px 40px;
+    gap: 32px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .salary {
+    font-size: 34px;
+  }
+
+  .badges {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .subheading {
+    font-size: 13px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .applyBtn {
+    width: max-content;
+    padding: 16px 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 48px;
+  }
+
+  .card {
+    padding: 48px;
+  }
+}

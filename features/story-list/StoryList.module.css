@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 16px;
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.storyCard {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  box-sizing: border-box;
+  /* Градиентный ободок — как у историй в соц.сетях */
+  border: 2.5px solid transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(135deg, #f97316, #ec4899, #8b5cf6) border-box;
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.18);
+  transition:
+    transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.2s ease;
+}
+
+.storyCard:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.storyCard:hover .image {
+  transform: scale(1.07);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 0, 0.2)
+  );
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .container {
+    gap: 18px;
+    padding: 20px 24px;
+  }
+
+  .storyCard {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: visible;
+    padding: 24px 0;
+  }
+
+  .storyCard {
+    width: 110px;
+    height: 110px;
+    border-radius: 22px;
+  }
+}
