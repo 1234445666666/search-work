@@ -3,6 +3,7 @@ import { vacancies } from "@/features/works/mock";
 import { useParams } from "next/navigation";
 import styles from "./vacancy.module.css";
 import Link from "next/link";
+import Button from "@mui/material/Button";
 
 export default function Page() {
   const { id } = useParams();
@@ -51,9 +52,13 @@ export default function Page() {
         </div>
 
         <div className={styles.actions}>
-          <button className={styles.applyBtn} onClick={() => alert("клик")}>
+          <Button
+            variant="contained"
+            className={styles.applyBtn}
+            onClick={() => alert("клик")}
+          >
             Откликнуться на вакансию
-          </button>
+          </Button>
         </div>
         <Link href="/works">Назад</Link>
       </article>

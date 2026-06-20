@@ -3,18 +3,14 @@
   top: 0;
   z-index: 100;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
   padding: 0 20px;
   height: 60px;
   background-color: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border, #e2e8f0);
-  overflow-x: auto;
-  white-space: nowrap;
-  /* Скрываем скроллбар на мобилке */
   scrollbar-width: none;
 }
 
@@ -23,48 +19,104 @@
 }
 
 .container nav {
-  display: inline-block;
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.container nav::-webkit-scrollbar {
+  display: none;
+}
+
+.container ul {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
 }
 
 .container li {
-  list-style: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.container li a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 14px;
   font-size: 15px;
   font-weight: 500;
   color: #94a3b8;
-  cursor: pointer;
+  position: relative;
   transition: color 0.2s ease;
 }
 
-/* p внутри Link — сбрасываем блочное поведение */
+/* Индикатор-подчёркивание снизу */
+.container li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background: #2563eb;
+  border-radius: 2px 2px 0 0;
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.container li:first-child a {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.container li:first-child a::after {
+  transform: scaleX(1);
+}
+
+.container li a:hover {
+  color: #0f172a;
+}
+
+.container li a:hover::after {
+  transform: scaleX(1);
+}
+
+/* p внутри Link */
 .container a p {
   display: inline;
 }
 
-.container nav:first-child li,
-.container li:hover {
-  color: #0f172a;
-}
-
 @media (min-width: 768px) {
   .container {
-    gap: 32px;
     padding: 0 40px;
     height: 64px;
   }
 
-  .container li {
-    font-size: 16px;
+  .container ul {
+    height: 64px;
+    gap: 4px;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
-    gap: 40px;
     padding: 0 60px;
-    overflow-x: visible;
   }
 
-  .container li {
+  .container li a {
     font-size: 16px;
+    padding: 0 16px;
+  }
+
+  .container li a::after {
+    left: 16px;
+    right: 16px;
   }
 }

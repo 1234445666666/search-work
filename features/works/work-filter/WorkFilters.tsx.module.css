@@ -1,5 +1,4 @@
 .form {
-  /* Отступы чтобы форма не прилипала к краям на мобилке */
   margin: 16px;
   background-color: #ffffff;
   border-radius: 16px;
@@ -33,50 +32,112 @@
   color: #475569;
 }
 
-.select,
-.input {
+/* ─── MUI Select ─────────────────────────────────────── */
+
+.select {
   width: 100%;
+}
+
+/* Корень Select */
+.select:global(.MuiInputBase-root) {
   height: 44px;
-  padding: 0 14px;
   border-radius: 10px;
-  border: 1.5px solid #e2e8f0;
+  background-color: #f8fafc;
   font-size: 15px;
   color: #0f172a;
-  background-color: #f8fafc;
-  box-sizing: border-box;
-  outline: none;
-  transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
   font-family: inherit;
 }
 
-.select:focus,
-.input:focus {
+/* Внутренний отступ */
+.select :global(.MuiSelect-select) {
+  padding: 10px 14px;
+  line-height: 1.4;
+}
+
+/* Рамка */
+.select :global(.MuiOutlinedInput-notchedOutline) {
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+/* Hover */
+.select:global(.MuiInputBase-root):hover
+  :global(.MuiOutlinedInput-notchedOutline) {
+  border-color: #94a3b8;
+}
+
+/* Focus */
+.select:global(.Mui-focused) :global(.MuiOutlinedInput-notchedOutline) {
   border-color: #2563eb;
-  background-color: #ffffff;
+  border-width: 1.5px;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-.select:hover,
-.input:hover {
+/* ─── MUI TextField (filled) ─────────────────────────── */
+
+.input {
+  width: 100%;
+}
+
+/* Убираем подчёркивание у filled варианта */
+.input :global(.MuiFilledInput-root)::before,
+.input :global(.MuiFilledInput-root)::after {
+  display: none;
+}
+
+/* Фон и форма инпута */
+.input :global(.MuiFilledInput-root) {
+  background-color: #f8fafc;
+  border-radius: 10px;
+  border: 1.5px solid #e2e8f0;
+  font-size: 15px;
+  font-family: inherit;
+  transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.input :global(.MuiFilledInput-root):hover {
+  background-color: #f8fafc;
   border-color: #94a3b8;
 }
+
+.input :global(.MuiFilledInput-root.Mui-focused) {
+  background-color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Цвет лейбла при фокусе */
+.input :global(.MuiInputLabel-root.Mui-focused) {
+  color: #2563eb;
+}
+
+/* Цвет лейбла по умолчанию */
+.input :global(.MuiInputLabel-root) {
+  color: #94a3b8;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+/* ─── Свитчи ─────────────────────────────────────────── */
 
 .checkboxGroup {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
 .checkboxLabel {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   cursor: pointer;
   user-select: none;
-  padding: 8px 12px;
+  padding: 6px 10px 6px 4px;
   border-radius: 10px;
   border: 1.5px solid transparent;
   transition: background-color 0.15s, border-color 0.15s;
+  /* компенсируем встроенный отступ Switch */
+  margin-left: -8px;
 }
 
 .checkboxLabel:hover {
@@ -84,12 +145,8 @@
   border-color: #bfdbfe;
 }
 
-.checkbox {
-  width: 18px;
-  height: 18px;
-  border-radius: 5px;
-  accent-color: #2563eb;
-  cursor: pointer;
+/* Цвет Switch через тему уже синий, но уточним размер */
+.checkboxLabel :global(.MuiSwitch-root) {
   flex-shrink: 0;
 }
 
@@ -98,6 +155,8 @@
   font-weight: 500;
   color: #334155;
 }
+
+/* ─── Медиа ──────────────────────────────────────────── */
 
 @media (min-width: 768px) {
   .form {
@@ -111,17 +170,12 @@
 
   .heading {
     grid-column: 1 / -1;
-    font-size: 13px;
   }
 
   .checkboxGroup {
     grid-column: 1 / -1;
     flex-direction: row;
-    gap: 8px;
-  }
-
-  .checkboxLabel {
-    padding: 8px 14px;
+    gap: 4px;
   }
 }
 
@@ -147,13 +201,12 @@
 
   .checkboxGroup {
     flex-direction: row;
-    gap: 8px;
+    gap: 4px;
     align-items: center;
     flex-shrink: 0;
   }
 
   .checkboxLabel {
     white-space: nowrap;
-    padding: 10px 14px;
   }
 }

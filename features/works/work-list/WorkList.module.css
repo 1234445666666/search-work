@@ -113,29 +113,50 @@
 
 .actions {
   display: flex;
+  align-items: center;
   gap: 8px;
   margin-top: 4px;
+  flex-wrap: wrap;
 }
 
-.applyBtn {
+/* Стили для MUI Button — нужен :global чтобы пробить специфичность MUI */
+.applyBtn:global(.MuiButton-root) {
   flex: 1;
+  min-width: 0;
   background: linear-gradient(135deg, #2563eb, #4f46e5);
-  color: #ffffff;
-  border: none;
-  padding: 12px 16px;
   border-radius: 10px;
   font-size: 14px;
   font-weight: 600;
-  cursor: pointer;
-  transition: opacity 0.15s ease, transform 0.1s ease;
+  text-transform: none;
+  padding: 10px 16px;
+  box-shadow: none;
+  letter-spacing: 0;
 }
 
-.applyBtn:hover {
-  opacity: 0.9;
+.applyBtn:global(.MuiButton-root):hover {
+  background: linear-gradient(135deg, #1d4ed8, #4338ca);
+  box-shadow: none;
+  opacity: 1;
 }
 
-.applyBtn:active {
-  transform: scale(0.98);
+/* Кнопка "Сравнить" */
+.compareBtn:global(.MuiButton-root) {
+  min-width: 0;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: none;
+  padding: 10px 14px;
+  letter-spacing: 0;
+  border-color: #e2e8f0;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.compareBtn:global(.MuiButton-root):hover {
+  border-color: #2563eb;
+  color: #2563eb;
+  background-color: #eff6ff;
 }
 
 .copyBtn {
@@ -157,34 +178,83 @@
   border-color: #cbd5e1;
 }
 
-.favoriteBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+.favoriteBtn:global(.MuiButton-root) {
   margin-bottom: 20px;
-  background-color: #ffffff;
-  color: #334155;
-  border: 1px solid #cbd5e1;
-  padding: 11px 20px;
   border-radius: 10px;
   font-size: 14px;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  user-select: none;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 10px 20px;
+  border-color: #cbd5e1;
+  color: #334155;
   width: 100%;
-  box-sizing: border-box;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  box-shadow: none;
 }
 
-.favoriteBtn:hover {
+.favoriteBtn:global(.MuiButton-root):hover {
   background-color: #eff6ff;
   border-color: #2563eb;
   color: #2563eb;
+  box-shadow: none;
 }
 
-.favoriteBtn:active {
+@media (min-width: 768px) {
+  .favoriteBtn:global(.MuiButton-root) {
+    width: auto;
+    font-size: 15px;
+  }
+}
+
+/* Баннер "Сравнить вакансии" */
+.compareBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 32px;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #1e3a8a, #4f46e5);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
+  flex-wrap: wrap;
+}
+
+.compareBannerText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.compareBannerTitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.compareBannerSub {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.compareBannerLink {
+  flex-shrink: 0;
+  background: #ffffff;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.compareBannerLink:hover {
+  opacity: 0.92;
+}
+
+.compareBannerLink:active {
   transform: scale(0.98);
 }
 

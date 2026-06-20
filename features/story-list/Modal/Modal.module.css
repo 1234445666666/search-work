@@ -127,6 +127,31 @@
   background: none;
 }
 
+/* Полоски прогресса слайдов */
+.progressBars {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.progressBar {
+  flex: 1;
+  min-width: 0;
+}
+
+/* MUI LinearProgress внутри полоски */
+.progressBar :global(.MuiLinearProgress-root) {
+  height: 4px;
+  border-radius: 2px;
+  background-color: #e2e8f0;
+}
+
+.progressBar :global(.MuiLinearProgress-bar) {
+  border-radius: 2px;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+}
+
 .imageWrapper {
   width: 100%;
   aspect-ratio: 1 / 1;

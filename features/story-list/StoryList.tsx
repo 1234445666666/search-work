@@ -1,15 +1,15 @@
 "use client";
 import { useState } from "react";
-import { StoryImages } from "./mock";
+import { stories } from "./mock";
 import styles from "./StoryList.module.css";
 import Modal from "./Modal/Modal";
 
 export default function StoryList() {
   const [selectedStory, setSelectedStory] = useState<
-    null | (typeof StoryImages)[0]
+    null | (typeof stories)[0]
   >(null);
 
-  function handleModalOpen(story: (typeof StoryImages)[0]) {
+  function handleModalOpen(story: (typeof stories)[0]) {
     setSelectedStory(story);
   }
 
@@ -18,13 +18,13 @@ export default function StoryList() {
   }
   return (
     <div className={styles.container}>
-      {StoryImages.map((img) => (
+      {stories.map((img) => (
         <div
           key={img.id}
           className={styles.storyCard}
           onClick={() => handleModalOpen(img)}
         >
-          <img src={img.url} alt={img.alt} className={styles.image} />
+          <img src={img.preview} alt={img.title} className={styles.image} />
           <div className={styles.overlay} />
         </div>
       ))}
@@ -32,9 +32,7 @@ export default function StoryList() {
         <Modal
           isOpen={!!selectedStory}
           onClose={handleModalClose}
-          imgUrl={selectedStory?.url}
-          imgAlt={selectedStory?.alt}
-          storyId={selectedStory?.id}
+          story={selectedStory}
         />
       )}
     </div>

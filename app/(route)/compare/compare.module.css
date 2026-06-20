@@ -1,0 +1,205 @@
+.page {
+  min-height: 100vh;
+  background-color: #f4f6f9;
+  padding: 24px 16px;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto 24px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.backLink::before {
+  content: "←";
+  font-size: 16px;
+}
+
+.backLink:hover {
+  color: #2563eb;
+}
+
+.heading {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+/* Сетка сравнения */
+.grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+/* Шапка колонок */
+.colHeader {
+  background: #ffffff;
+  padding: 20px 16px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.colHeader:first-child {
+  background: #f8fafc;
+}
+
+.colHeader:not(:last-child) {
+  border-right: 1px solid #e2e8f0;
+}
+
+.vacancyTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.3;
+  margin: 0 0 4px;
+}
+
+.vacancyCompany {
+  font-size: 12px;
+  color: #94a3b8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* Строки параметров */
+.row {
+  display: contents;
+}
+
+.rowLabel {
+  background: #f8fafc;
+  padding: 14px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+}
+
+.rowValue {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #334155;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.rowValue:first-of-type {
+  border-right: 1px solid #e2e8f0;
+}
+
+/* Выигрышный параметр */
+.rowValue.winner {
+  color: #059669;
+  background: #f0fdf4;
+  font-weight: 700;
+}
+
+.rowValue.loser {
+  color: #94a3b8;
+}
+
+/* Зарплата — особый стиль */
+.salary {
+  font-size: 16px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #059669, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.salary.loser {
+  background: none;
+  -webkit-text-fill-color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Бейдж да/нет */
+.badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.badgeYes {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.badgeNo {
+  background: #f8fafc;
+  color: #94a3b8;
+  border: 1px solid #e2e8f0;
+}
+
+/* Пустое состояние — нет вакансий для сравнения */
+.empty {
+  max-width: 1000px;
+  margin: 80px auto;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.emptyTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.emptyText {
+  font-size: 15px;
+}
+
+@media (min-width: 768px) {
+  .page {
+    padding: 32px 24px;
+  }
+
+  .heading {
+    font-size: 24px;
+  }
+
+  .rowLabel {
+    font-size: 14px;
+  }
+
+  .rowValue {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page {
+    padding: 40px;
+  }
+}

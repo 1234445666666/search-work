@@ -3,6 +3,9 @@ import { useFiltersStore } from "@/store/useFiltersStore";
 import { vacancies } from "../mock";
 import type { IVacancies } from "../types";
 import styles from "./WorkFilters.tsx.module.css";
+import { Switch, TextField } from "@mui/material";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 export default function WorkFilters() {
   const {
@@ -36,30 +39,33 @@ export default function WorkFilters() {
         <label className={styles.label} htmlFor="city-select">
           Город
         </label>
-        <select
+        <Select
           id="city-select"
           name="type"
           className={styles.select}
-          value={city}
+          value={city ?? ""}
           onChange={(e) => setCity(e.target.value)}
+          displayEmpty
+          MenuProps={{ disableScrollLock: true }}
         >
-          <option value="">все города</option>
+          <MenuItem value="">все города</MenuItem>
           {uniqueCities.map((city) => (
-            <option value={city} key={city}>
+            <MenuItem value={city} key={city}>
               {city}
-            </option>
+            </MenuItem>
           ))}
-        </select>
+        </Select>
       </div>
 
       <div className={styles.fieldGroup}>
         <label className={styles.label} htmlFor="salary-input">
           Зарплата от, ₽
         </label>
-        <input
+        <TextField
           id="salary-input"
           type="text"
-          placeholder="Например, 60000"
+          label="Например, 60000"
+          variant="filled"
           className={styles.input}
           value={salaryMin}
           onChange={(e) => setSalaryMin(e.target.value)}
@@ -68,24 +74,12 @@ export default function WorkFilters() {
 
       <div className={styles.checkboxGroup}>
         <label className={styles.checkboxLabel} htmlFor="housing">
-          <input
-            type="checkbox"
-            id="housing"
-            className={styles.checkbox}
-            checked={housing}
-            onChange={toggleHousing}
-          />
+          <Switch onChange={toggleHousing} checked={housing} />
           <span className={styles.checkboxText}>С жильем</span>
         </label>
 
         <label className={styles.checkboxLabel} htmlFor="ndfl">
-          <input
-            type="checkbox"
-            id="ndfl"
-            className={styles.checkbox}
-            checked={ndfl}
-            onChange={toggleNDFL}
-          />
+          <Switch checked={ndfl} onChange={toggleNDFL} />
           <span className={styles.checkboxText}>С оплатой НДФЛ</span>
         </label>
       </div>
