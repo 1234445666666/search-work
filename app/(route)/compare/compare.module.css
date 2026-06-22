@@ -161,6 +161,58 @@
   border: 1px solid #e2e8f0;
 }
 
+/* Строка итогового балла */
+.scoreLabel {
+  background: #f8fafc;
+  padding: 18px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  border-right: 1px solid #e2e8f0;
+  border-top: 2px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+}
+
+.scoreValue {
+  padding: 18px 16px;
+  border-top: 2px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.scoreValue.scoreWinner {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+}
+
+.scoreValue.scoreLoser {
+  background: #f8fafc;
+}
+
+.scoreNumber {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #059669, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.scoreValue.scoreLoser .scoreNumber {
+  background: none;
+  -webkit-text-fill-color: #94a3b8;
+}
+
+.scoreMax {
+  font-size: 14px;
+  font-weight: 600;
+  color: #94a3b8;
+  align-self: flex-end;
+  padding-bottom: 3px;
+}
+
 /* Пустое состояние — нет вакансий для сравнения */
 .empty {
   max-width: 1000px;

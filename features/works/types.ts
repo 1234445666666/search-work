@@ -11,4 +11,7 @@ export interface IVacancies {
   city: string;
   position: string;
   fullDescription: string;
+  schedule: string;
+  experience: string;
+  employment: string;
 }

@@ -13,6 +13,12 @@ export default function WorkFilters() {
     salaryMin,
     housing,
     ndfl,
+    schedule,
+    experience,
+    employment,
+    setEmployment,
+    setSchedule,
+    setExperience,
     setCity,
     setSalaryMin,
     toggleHousing,
@@ -52,6 +58,28 @@ export default function WorkFilters() {
           {uniqueCities.map((city) => (
             <MenuItem value={city} key={city}>
               {city}
+            </MenuItem>
+          ))}
+        </Select>
+      </div>
+
+      <div className={styles.fieldGroup}>
+        <label className={styles.label} htmlFor="schedule-select">
+          Граффик работы
+        </label>
+        <Select
+          id="schedule-select"
+          name="type"
+          className={styles.select}
+          value={schedule ?? ""}
+          onChange={(e) => setSchedule(e.target.value)}
+          displayEmpty
+          MenuProps={{ disableScrollLock: true }}
+        >
+          <MenuItem value="">все граффики работы</MenuItem>
+          {uniqueCities.map((schedule) => (
+            <MenuItem value={schedule} key={schedule}>
+              {schedule}
             </MenuItem>
           ))}
         </Select>

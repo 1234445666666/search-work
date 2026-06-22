@@ -3,6 +3,7 @@ import { useFavoritesStore } from "@/store/useFavoritesStore";
 import styles from "../../WorkList.module.css";
 import { IVacancies } from "@/features/works/types";
 import Button from "@mui/material/Button";
+import { useCompareStore } from "@/store/useCompareStore";
 
 interface IVacancyCard {
   vacancy: IVacancies;
@@ -10,6 +11,7 @@ interface IVacancyCard {
 
 export default function VacancyCard({ vacancy }: IVacancyCard) {
   const { favorites, addFavorite, removeFavorite } = useFavoritesStore();
+  const { addCompare } = useCompareStore();
   const isFavorite = favorites.some((fav) => fav.id === vacancy.id);
 
   function handleCopy() {
@@ -60,7 +62,11 @@ export default function VacancyCard({ vacancy }: IVacancyCard) {
         >
           {isFavorite ? "❤️" : "🤍"}
         </button>
-        <Button className={styles.compareBtn} variant="outlined">
+        <Button
+          className={styles.compareBtn}
+          variant="outlined"
+          onClick={() => addCompare(vacancy)}
+        >
           Сравнить
         </Button>
       </div>

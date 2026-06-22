@@ -8,7 +8,8 @@ export default function useFilteredVacancies() {
   const { data, loading, error } = useFetch(vacancies);
 
   const { favorites } = useFavoritesStore();
-  const { city, salaryMin, housing, ndfl } = useFiltersStore();
+  const { city, salaryMin, housing, ndfl, experience, employment, schedule } =
+    useFiltersStore();
   const [showFavorites, setShowFavorites] = useState(false);
 
   const filteredVacancies = useMemo(() => {
@@ -27,8 +28,28 @@ export default function useFilteredVacancies() {
     if (ndfl === true) {
       result = result.filter((item) => item.hasNdfl === true);
     }
+    if (experience && experience !== null) {
+      result = result?.filter((item) => item.experience == experience);
+    }
+    if (employment && employment !== null) {
+      result = result?.filter((item) => item.employment == employment);
+    }
+    if (schedule && schedule !== null) {
+      result = result?.filter((item) => item.schedule == schedule);
+    }
     return result;
-  }, [city, salaryMin, housing, ndfl, data, showFavorites, favorites]);
+  }, [
+    city,
+    salaryMin,
+    housing,
+    ndfl,
+    employment,
+    experience,
+    schedule,
+    data,
+    showFavorites,
+    favorites,
+  ]);
   return {
     vacancies: filteredVacancies,
     loading,
