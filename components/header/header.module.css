@@ -71,13 +71,13 @@
   transition: transform 0.2s ease;
 }
 
-.container li:first-child a {
-  color: #0f172a;
+.activeLink {
+  color: #0f172a !important;
   font-weight: 600;
 }
 
-.container li:first-child a::after {
-  transform: scaleX(1);
+.activeLink::after {
+  transform: scaleX(1) !important;
 }
 
 .container li a:hover {

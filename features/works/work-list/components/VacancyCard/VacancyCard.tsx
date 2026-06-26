@@ -11,8 +11,9 @@ interface IVacancyCard {
 
 export default function VacancyCard({ vacancy }: IVacancyCard) {
   const { favorites, addFavorite, removeFavorite } = useFavoritesStore();
-  const { addCompare } = useCompareStore();
+  const { compare, addCompare, removeCompare } = useCompareStore();
   const isFavorite = favorites.some((fav) => fav.id === vacancy.id);
+  const isInCompare = compare.some((v) => v.id === vacancy.id);
 
   function handleCopy() {
     const currentUrl = window.location.origin;
@@ -36,6 +37,15 @@ export default function VacancyCard({ vacancy }: IVacancyCard) {
           className={`${styles.badge} ${vacancy.patentNotRequired ? styles.success : styles.warning}`}
         >
           {vacancy.patentNotRequired ? "Патент не требуется" : "Нужен патент"}
+        </span>
+        <span className={`${styles.badge} ${styles.badgeInfo}`}>
+          {vacancy.schedule}
+        </span>
+        <span className={`${styles.badge} ${styles.badgeInfo}`}>
+          {vacancy.experience}
+        </span>
+        <span className={`${styles.badge} ${styles.badgeInfo}`}>
+          {vacancy.employment}
         </span>
       </div>
       <p className={styles.company}>{vacancy.company}</p>
@@ -63,11 +73,13 @@ export default function VacancyCard({ vacancy }: IVacancyCard) {
           {isFavorite ? "❤️" : "🤍"}
         </button>
         <Button
-          className={styles.compareBtn}
+          className={`${styles.compareBtn} ${isInCompare ? styles.compareBtnActive : ""}`}
           variant="outlined"
-          onClick={() => addCompare(vacancy)}
+          onClick={() =>
+            isInCompare ? removeCompare(vacancy.id) : addCompare(vacancy)
+          }
         >
-          Сравнить
+          {isInCompare ? "В сравнении" : "Сравнить"}
         </Button>
       </div>
     </div>

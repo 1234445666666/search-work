@@ -156,6 +156,27 @@
   color: #334155;
 }
 
+/* ─── Кнопка сброса ──────────────────────────────────── */
+
+.resetBtn:global(.MuiButton-root) {
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 8px 20px;
+  border-color: #e2e8f0;
+  color: #94a3b8;
+  white-space: nowrap;
+  align-self: flex-end;
+}
+
+.resetBtn:global(.MuiButton-root):hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background-color: #fef2f2;
+}
+
 /* ─── Медиа ──────────────────────────────────────────── */
 
 @media (min-width: 768px) {
@@ -177,6 +198,11 @@
     flex-direction: row;
     gap: 4px;
   }
+
+  .resetBtn:global(.MuiButton-root) {
+    grid-column: 1 / -1;
+    justify-self: end;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -184,9 +210,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
     gap: 16px;
     margin: 24px auto 0;
-    max-width: 1200px;
+    max-width: 1280px;
     padding: 20px 28px;
   }
 
@@ -195,7 +222,7 @@
   }
 
   .fieldGroup {
-    min-width: 180px;
+    min-width: 150px;
     flex: 1;
   }
 
@@ -208,5 +235,11 @@
 
   .checkboxLabel {
     white-space: nowrap;
+  }
+
+  .resetBtn:global(.MuiButton-root) {
+    flex-shrink: 0;
+    align-self: flex-end;
+    margin-bottom: 0;
   }
 }

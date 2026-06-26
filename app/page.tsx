@@ -1,3 +1,7 @@
 export default function Home() {
-  return <div>Стартовая страница</div>;
+  return (
+    <div>
+      <h1>Сервис по поиску вакансий </h1>
+    </div>
+  );
 }

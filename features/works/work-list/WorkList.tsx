@@ -3,11 +3,13 @@ import styles from "./WorkList.module.css";
 import { Box, Button, CircularProgress } from "@mui/material";
 import VacancyCard from "./components/VacancyCard/VacancyCard";
 import useFilteredVacancies from "@/hooks/useFilteredVacancies";
+import { useCompareStore } from "@/store/useCompareStore";
 import Link from "next/link";
 
 export default function WorkList() {
   const { vacancies, loading, error, showFavorites, setShowFavorites } =
     useFilteredVacancies();
+  const { compare } = useCompareStore();
   if (loading)
     return (
       <Box
@@ -36,15 +38,25 @@ export default function WorkList() {
           <VacancyCard key={vacancy.id} vacancy={vacancy} />
         ))}
       </div>
-      <div className={styles.compareBanner}>
-        <div className={styles.compareBannerText}>
-          <h3 className={styles.compareBannerTitle}>Сравнить вакансии</h3>
-          <p className={styles.compareBannerSub}>Выбери 2 вакансии и сравни условия</p>
+      {compare.length === 1 && (
+        <div className={styles.compareBanner}>
+          <div className={styles.compareBannerText}>
+            <h3 className={styles.compareBannerTitle}>1 вакансия добавлена</h3>
+            <p className={styles.compareBannerSub}>Добавьте ещё одну, чтобы сравнить</p>
+          </div>
         </div>
-        <Link href={"/compare"} className={styles.compareBannerLink}>
-          Перейти к сравнению
-        </Link>
-      </div>
+      )}
+      {compare.length === 2 && (
+        <div className={styles.compareBanner}>
+          <div className={styles.compareBannerText}>
+            <h3 className={styles.compareBannerTitle}>2 вакансии выбраны</h3>
+            <p className={styles.compareBannerSub}>Готово к сравнению</p>
+          </div>
+          <Link href={"/compare"} className={styles.compareBannerLink}>
+            Перейти к сравнению
+          </Link>
+        </div>
+      )}
     </section>
   );
 }

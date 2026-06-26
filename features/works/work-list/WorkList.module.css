@@ -102,6 +102,12 @@
   border: 1px solid #fecaca;
 }
 
+.badgeInfo {
+  background-color: #f0f4ff;
+  color: #4f46e5;
+  border: 1px solid #c7d2fe;
+}
+
 .company {
   font-size: 13px;
   font-weight: 500;
@@ -157,6 +163,18 @@
   border-color: #2563eb;
   color: #2563eb;
   background-color: #eff6ff;
+}
+
+.compareBtnActive:global(.MuiButton-root) {
+  border-color: #2563eb;
+  color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.compareBtnActive:global(.MuiButton-root):hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background-color: #fef2f2;
 }
 
 .copyBtn {
